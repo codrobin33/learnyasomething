@@ -1,0 +1,42 @@
+import { createStore } from 'redux'
+import { Provider } from 'react-redux' // good time to mention npm.
+
+// app.jsx -> setup store
+import {counter} from './reducer.jsx'
+let store = createStore(counter)
+
+<Provider store={store}>
+  <App />
+</Provider>,
+
+// reducer
+export const counter = (state = 0, action) => {
+  switch (action.type) {
+  case 'INCREMENT':
+    return state + 1
+  case 'DECREMENT':
+    return state - 1
+  default:
+    return state
+  }
+}
+
+// actions
+export const increment = () => {
+  return {
+    type: 'INCREMENT'
+  }
+}
+
+export const decrement = () => {
+  return {
+    type: 'DECREMENT'
+  }
+}
+
+
+1. create reducer.
+2. create action.
+3. hookup store to app.
+4. create Component
+5. dispatch actions.
